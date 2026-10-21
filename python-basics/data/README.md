@@ -1,15 +1,17 @@
-# MLB teaching data: local use only pending permission
+# Local MLB teaching data
 
-`mlb_2026_hitters.csv` is intentionally absent from this publication copy. The original notebook attributes it to MLB.com home-run leader pages on September 22, 2026, but the source package contains no data license or redistribution permission. The original file contains 50 rows and 20 columns, with 25 records labeled AL and 25 labeled NL. These file counts were checked; the season values, collection date, and selection were not independently verified.
+The original `mlb_2026_hitters.csv` is excluded because redistribution permission was not established. Place an authorized local copy in this folder under that name to run the data-analysis sections. This folder's CSV/JSON files are ignored by Git.
 
-If you already have an authorized copy for your local teaching use, place it here under its original name. Do not commit it or its generated tables/charts until redistribution rights are established. The repository `.gitignore` excludes CSV/JSON files in this folder. No automated download or scraping is provided.
-
-Expected columns, preserving the original file's schema:
+Expected columns:
 
 ```text
 Player,Team,League,Position,G,AB,R,H,2B,3B,HR,RBI,BB,SO,SB,CS,AVG,OBP,SLG,OPS
 ```
 
-The lesson uses `Player`, `Team`, `League`, `Position`, `HR`, `RBI`, `SB`, `AVG`, `OBP`, `SLG`, and `OPS`. Counting stats and rate stats should be numeric. An authorized alternative with this schema may work, but its provenance, units, and interpretation must be documented before use. No alternative data is supplied or invented here.
+Counting and rate statistics should be numeric. The verification script expects the original teaching sample's shape: 50 rows, 20 columns, with 25 AL and 25 NL records. It can check an authorized copy without adding it to the repository:
 
-See [provenance and rights decisions](../../DATA_PROVENANCE.md). Until an appropriately licensed dataset is available, a fresh public checkout can read the full Python lesson and run its initial Python examples, but cannot execute the data analysis sections.
+```sh
+python scripts/verify_notebooks.py --mlb-csv python-basics/data/mlb_2026_hitters.csv
+```
+
+Run that command from the repository root. See [data sources](../../DATA_PROVENANCE.md) for attribution. Without the CSV, the initial Python exercises and the separate API workshop remain available.

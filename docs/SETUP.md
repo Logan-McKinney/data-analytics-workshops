@@ -4,7 +4,7 @@ These instructions use Windows PowerShell and a project-local environment. Verif
 
 ## 1. Install the tools and open the project
 
-## 1. Install Python 3.13 for Windows from [python.org](https://www.python.org/downloads/windows/), including the Python launcher (`py`). Check `py -3.13 --version` in a new terminal.
+1. Install Python 3.13 for Windows from [python.org](https://www.python.org/downloads/windows/), including the Python launcher (`py`). Check `py -3.13 --version` in a new terminal.
 2. Install [VS Code](https://code.visualstudio.com/). In Extensions, install **Python** (`ms-python.python`) and **Jupyter** (`ms-toolsai.jupyter`), both published by Microsoft.
 3. Extract or copy the whole `data-analytics-workshops` folder. In VS Code use **File > Open Folder** and choose that folder. Avoid opening just one notebook from a ZIP.
 4. Open **Terminal > New Terminal**. Confirm `Get-Location` is the project root: `Get-ChildItem requirements.txt` should find the requirements file.
@@ -23,7 +23,7 @@ Activation is optional. The explicit interpreter path above avoids PowerShell ex
 
 ## 3. Select the VS Code notebook kernel
 
-## 1. Open `working-with-apis/instructor.ipynb` for a completed first run, or `student.ipynb` to follow the live workshop.
+1. Open `working-with-apis/instructor.ipynb` for a completed first run, or `student.ipynb` to follow the live workshop.
 2. Choose **Select Kernel > Python Environments** and select `.venv\Scripts\python.exe` from this project. If it is missing, use **Python: Select Interpreter** from the Command Palette and enter that interpreter path, then select the notebook kernel again.
 3. Leave `OFFLINE_MODE = True` for an offline run.
 4. Use **Restart Kernel**, then **Run All** in the instructor notebook. In a student notebook use **Shift+Enter** and complete each fill-in before moving on. Python student exercises raise `NotImplementedError`; API student blanks are underscore placeholders and can raise `NameError` until completed.
@@ -75,4 +75,4 @@ For Python basics, supply a local CSV you are permitted to use (without adding i
 .\.venv\Scripts\python.exe scripts\verify_notebooks.py --mlb-csv .\python-basics\data\mlb_2026_hitters.csv
 ```
 
-The verifier executes temporary copies in fresh kernels and does not save outputs into the publication notebooks. It also checks student templates after substituting the existing instructor solution cells in memory; that is a dependency check, not a claim that unfinished student notebooks run unchanged.
+The verifier executes temporary copies in fresh kernels and does not save outputs into the notebooks. It also checks student templates after substituting the existing instructor solution cells in memory; that is a dependency check, not a claim that unfinished student notebooks run unchanged.

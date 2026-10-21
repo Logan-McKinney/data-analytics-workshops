@@ -1,63 +1,40 @@
 # Data Analytics Workshops
 
-Hands-on Python workshops from the **University of Dayton Data Analytics Club**. Learn a repeatable workflow: ask a question, load data, inspect it, analyze it, and visualize the result. The lessons retain the original baseball, Pokémon, and Dayton weather examples and guided classroom style.
+Hands-on Python workshops I helped organize, develop, and lead through the **University of Dayton Data Analytics Club**. The lessons introduce a practical workflow: ask a question, load data, explore it with pandas, and explain the results with interactive Plotly charts.
 
-| Workshop | What you will learn | Start here |
+## The workshops
+
+| Workshop | What participants practice | Notebooks |
 | --- | --- | --- |
-| Python basics | Variables, lists, indexing, comparisons, loops; pandas loading, inspection, selection, filtering, sorting, `groupby`; interactive Plotly bar and scatter charts | [Student notebook](python-basics/student.ipynb) · [Instructor solutions](python-basics/instructor.ipynb) |
-| Working with APIs | Endpoints, GET requests, status codes, nested JSON, query parameters, JSON versus CSV, DataFrames and charts | [Student notebook](working-with-apis/student.ipynb) · [Instructor solutions](working-with-apis/instructor.ipynb) |
+| Python basics | Variables, lists, loops, filtering, sorting, and grouping; comparing baseball hitting statistics with bar and scatter charts | [Student exercises](python-basics/student.ipynb) · [Instructor solutions](python-basics/instructor.ipynb) |
+| Working with APIs | HTTP GET requests, nested JSON, query parameters, and JSON/CSV data; exploring Pokémon attributes and plotting Dayton weather examples | [Student exercises](working-with-apis/student.ipynb) · [Instructor solutions](working-with-apis/instructor.ipynb) |
 
-**Publication status:** prepared for a private GitHub repository at the owner’s request; public release and reuse licensing remain subject to review. The API instructor lesson runs offline with the included examples. The Python lesson needs an authorized local MLB CSV, which is **not redistributed** here. Original season statistics are unverified. See [data provenance](DATA_PROVENANCE.md) and [verification / remaining work](docs/VERIFICATION.md).
+Each workshop has a roughly 50-minute teaching plan, an instructor guide, an answer key, and a cheat sheet. The API session can be used independently of the Python basics session.
 
-## Getting started
+## Get started
 
-Follow the [Windows, VS Code, and Jupyter setup guide](docs/SETUP.md). It explains how to create a virtual environment, install [requirements.txt](requirements.txt), select the matching kernel, and run notebooks in order.
+Uses Python, pandas, Plotly Express, requests, and Jupyter. From the repository root:
 
-For a complete walkthrough, open an `instructor.ipynb`, restart the kernel, and run all cells from the top. Student notebooks intentionally contain incomplete exercises; fill these in during the workshop before running dependent cells. Solutions are public in this repository, so instructors should share the student notebook window during class.
-
-No secret API keys or accounts are needed for the supplied offline examples. The API notebook defaults to `OFFLINE_MODE = True`. To practice live requests, change it to `False` and restart/run from the top. Network or HTTP failures are intentionally visible: switch back to offline mode and restart/run all to recover. The supplied weather is illustrative classroom data, **not a live or historical forecast**. Offline files stay fixed when names or coordinates change.
-
-## Workshop organization
-
-```text
-data-analytics-workshops/
-├── python-basics/
-│   ├── student.ipynb
-│   ├── instructor.ipynb
-│   ├── data/README.md           # How to supply the withheld MLB CSV
-│   ├── cheat-sheet.md
-│   ├── instructor-key.md
-│   └── instructor-guide.md
-├── working-with-apis/
-│   ├── student.ipynb
-│   ├── instructor.ipynb
-│   ├── data/                   # Original JSON and CSV fallback examples
-│   ├── cheat-sheet.md
-│   ├── instructor-key.md
-│   └── instructor-guide.md
-├── docs/SETUP.md
-├── docs/VERIFICATION.md
-├── scripts/verify_notebooks.py
-├── requirements.txt
-├── DATA_PROVENANCE.md
-├── THIRD_PARTY_NOTICES.md
-├── LICENSE_STATUS.md
-└── CHANGELOG.md
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m jupyter lab
 ```
 
-The Python workshop follows a roughly 50-minute teaching plan. The API workshop also targets about 50 minutes of instructional content and can be attended without the first session. The original mini challenges are preserved; no extra exercises or datasets have been invented.
+Open an `instructor.ipynb` for a complete walkthrough, or a `student.ipynb` to work through the exercises. Select the project environment as the kernel and run cells in order. Student notebooks contain intentional blanks that must be completed before dependent cells run. See the [VS Code and Jupyter setup guide](docs/SETUP.md) for more detail.
 
-## Technologies and references
+**Python lesson data:** the original MLB CSV is excluded because redistribution permission was not established. To run its data-analysis sections, place an authorized local copy at `python-basics/data/mlb_2026_hitters.csv`; the [data note](python-basics/data/README.md) lists the expected columns. Initial Python exercises do not need it.
 
-Python, pandas, Plotly Express, requests, JupyterLab, and VS Code's Python/Jupyter extensions. JSON, CSV, dictionaries, lists, and HTTP GET are the core data and API concepts.
+The API notebooks default to `OFFLINE_MODE = True` and include Pokémon and weather examples. The supplied weather values are illustrative classroom data, not a live or historical forecast. Set offline mode to `False` and restart/run from the top to practice live requests to [PokéAPI](https://pokeapi.co/docs/v2) and [Open-Meteo](https://open-meteo.com/en/docs).
 
-- [PokéAPI documentation](https://pokeapi.co/docs/v2) — the original Pokémon examples.
-- [Open-Meteo documentation](https://open-meteo.com/en/docs) — the original weather examples; [service terms](https://open-meteo.com/en/terms) apply to live use.
-- [Cheat sheet: pandas and Plotly](python-basics/cheat-sheet.md).
-- [Cheat sheet: APIs](working-with-apis/cheat-sheet.md).
+## Teaching resources and checks
 
-## Maintenance and publication
+- [Python/pandas/Plotly cheat sheet](python-basics/cheat-sheet.md) and [instructor guide](python-basics/instructor-guide.md).
+- [API cheat sheet](working-with-apis/cheat-sheet.md) and [instructor guide](working-with-apis/instructor-guide.md).
+- Run `python scripts/verify_notebooks.py` to check notebook structure, syntax, local links, fallback data, and API notebook execution with network calls blocked. Python data execution is skipped unless an authorized CSV is supplied with `--mlb-csv PATH`.
 
-Run `python scripts/verify_notebooks.py` for offline validation of the API instructor notebook, all notebook schemas and Python syntax, and publication hygiene. See the verification guide for checking the Python lesson with an authorized CSV. Student templates are not expected to execute unchanged.
+## Credits and data sources
 
-Before committing notebooks, restart the kernel and clear all outputs, then save. Keep credentials, local data, environments, caches, and generated exports out of version control. Resolve the [licensing decisions](LICENSE_STATUS.md) before presenting this as an openly licensed teaching resource. Changes made for this publication copy are recorded in [CHANGELOG.md](CHANGELOG.md).
+Developed for the University of Dayton Data Analytics Club, with Logan McKinney helping organize, develop, and lead the workshops. The teaching materials retain the club workshop examples and shared classroom format.
+
+Pokémon examples credit PokéAPI and its contributors; live weather examples credit Open-Meteo. See [data sources](DATA_PROVENANCE.md) and [third-party notices](THIRD_PARTY_NOTICES.md) for attribution. A repository-wide reuse license has not been selected; third-party notices still apply.
