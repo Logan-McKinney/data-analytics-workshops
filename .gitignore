@@ -1,0 +1,37 @@
+# Environments and Python/Jupyter caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.jupyter/
+.ipython/
+.cache/
+
+# Credentials and machine-specific settings
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local data whose redistribution has not been cleared
+python-basics/data/*.csv
+python-basics/data/*.json
+
+# Generated exports, execution results, and local verification artifacts
+output/
+outputs/
+exports/
+reports/
+tmp/
+*.executed.ipynb
+*.html
+*.log
+results.csv
+results.xlsx
